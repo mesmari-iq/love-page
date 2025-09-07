@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <title>Heart</title>
+  <defs>
+    <!-- Main gradient -->
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7aa6"/>
+      <stop offset="55%" stop-color="#ff4d88"/>
+      <stop offset="100%" stop-color="#ff2d6f"/>
+    </linearGradient>
+    <!-- Gloss highlight -->
+    <radialGradient id="gloss" cx="35%" cy="25%" r="45%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Inner shadow -->
+    <filter id="inner" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="1"/>
+      <feGaussianBlur stdDeviation="1.6"/>
+      <feComposite operator="out" in2="SourceGraphic"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .65 0"/>
+      <feComposite operator="atop" in2="SourceGraphic"/>
+    </filter>
+    <style><![CDATA[
+      .shadow { filter: url(#inner); }
+    ]]></style>
+  </defs>
+
+  <!-- Heart shape -->
+  <g class="shadow">
+    <path d="M50 18 C44 6 28 2 18 10 C5 20 6 40 18 52 L50 84 L82 52 C94 40 95 20 82 10 C72 2 56 6 50 18 Z" fill="url(#g)"/>
+  </g>
+
+  <!-- Gloss layer -->
+  <ellipse cx="38" cy="28" rx="18" ry="12" fill="url(#gloss)"/>
+</svg>

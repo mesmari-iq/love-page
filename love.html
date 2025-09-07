@@ -1,0 +1,329 @@
+<!--
+  =============<< ********* >>=============
+  Author       : Ahsan Qaed
+  Instagram        : _a41
+  Organization : Mesmari
+  Created On   : 2025-09-07
+  Title        : Love page
+  Description  : A gift from Mesmari :)
+  Copyright (c) 2025 Mesmari.
+  =============<< ********* >>=============
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حبيبتي</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&display=swap');
+        :root {
+            --pink: #ff4d88;
+            --pink-2: #ff2d6f;
+            --pink-3: #ff7aa6;
+            --bg: #000;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: "Changa", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        /* ===== خلفية  ===== */
+        .bg-shapes {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, var(--pink-3), transparent 70%);
+            animation: float 12s ease-in-out infinite;
+            opacity: 0.3;
+        }
+        
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+            animation-duration: 18s;
+        }
+        
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: -120px;
+            right: -120px;
+            animation-duration: 20s;
+        }
+        
+        .circle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: -80px;
+            animation-duration: 15s;
+        }
+        
+        .circle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            bottom: 30%;
+            right: -100px;
+            animation-duration: 17s;
+        }
+        
+        @keyframes float {
+            
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+            
+            50% {
+                transform: translateY(-40px) translateX(25px);
+            }
+        }
+        
+        /* ===== زر الكلب ===== */
+        .heart-wrap {
+            margin-bottom: 24px;
+        }
+        
+        .heart {
+            all: unset;
+            cursor: pointer;
+            display: inline-block;
+            width: clamp(160px, 28vw, 280px);
+            aspect-ratio: 1/1;
+            transition: transform .25s ease, filter .25s ease;
+            filter: drop-shadow(0 16px 30px rgba(255, 77, 136, .25)) drop-shadow(0 0 18px rgba(255, 77, 136, .2));
+        }
+        
+        .heart img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .heart:hover {
+            transform: scale(1.06);
+        }
+        
+        .heart:active {
+            transform: scale(.98);
+        }
+        
+        /* نبض مستمر */
+        @keyframes idleBeat {
+            
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            
+            50% {
+                transform: scale(1.03);
+            }
+        }
+        
+        .idle {
+            animation: idleBeat 2.6s ease-in-out infinite;
+        }
+        
+        /* نبض عند الضغط */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            
+            35% {
+                transform: scale(1.15);
+            }
+            
+            70% {
+                transform: scale(0.97);
+            }
+            
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .do-pulse {
+            animation: pulse 520ms ease-in-out;
+        }
+        
+        /* ===== الرسالة ===== */
+        .message {
+            font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+            color: var(--pink);
+            display: none;
+            white-space: pre-line;
+            line-height: 1.8;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        
+        .typing {
+            border-inline-end: 2px solid var(--pink);
+            animation: caret .8s steps(1) infinite;
+        }
+        
+        @keyframes caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+        
+        /* ===== كلوب صغيرة عند الضغط ===== */
+        .particle {
+            position: fixed;
+            font-size: 14px;
+            color: var(--pink);
+            pointer-events: none;
+            filter: drop-shadow(0 0 6px rgba(255, 77, 136, .6));
+            animation: fly 900ms ease-out forwards;
+        }
+        
+        @keyframes fly {
+            to {
+                transform: translate(var(--dx), var(--dy)) scale(0.9) rotate(25deg);
+                opacity: 0;
+            }
+        }
+        
+        /* ===== الكتابة الظاهرية  ===== */
+        .hint {
+            color: #c6c6c6;
+            opacity: .7;
+            font-size: 1rem;
+            margin-top: 12px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            
+            .idle,
+            .do-pulse,
+            .circle {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- عناصر الخلفية -->
+    <div class="bg-shapes">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <!-- زر الكلب -->
+    <div class="heart-wrap">
+        <button class="heart idle" aria-label="اضغطي على كلب" id="heartBtn" type="button">
+            <img id="heartImg" src="heart.svg" alt="كلب وردي" draggable="false" />
+        </button>
+    </div>
+    
+    <!-- رسالة الحب -->
+    <div class="message" id="loveMessage"></div>
+    <!-- نص توضيحي -->
+    <div class="hint">دوسي على القلب 💗</div>
+    
+    <script>
+        const text = "أحبكِ أنتِ نبضي وراحتي وعمري. معكِ كل شيء يزهر. 💖";
+        let typingTimer = null;
+        
+        // دالة لعرض النص بحركة الكتابة المتدرجة (typewriter effect)
+        function typeWriter(el, content, speed = 70) {
+            if (typingTimer) clearInterval(typingTimer); // إلغاء أي كتابة سابقة
+            el.textContent = "";
+            let i = 0;
+            el.classList.add('typing');
+            typingTimer = setInterval(() => {
+                el.textContent += content[i++] || "";
+                if (i >= content.length) {
+                    clearInterval(typingTimer);
+                    typingTimer = null;
+                    el.classList.remove('typing');
+                }
+            }, speed);
+        }
+        
+        // دالة لإطلاق قلوب صغيرة من مكان الكلب عند الضغط
+        function burst(x, y) {
+            const count = 16; // عدد الكلوب الصغيرة
+            for (let i = 0; i < count; i++) {
+                const s = document.createElement('span');
+                s.className = 'particle';
+                s.textContent = '❤';
+                const angle = (Math.PI * 2) * (i / count); // زوايا متساوية لتوزيع الكلوب
+                const r = 80 + Math.random() * 40; // نصف قطر عشوائي
+                const dx = Math.cos(angle) * r + (Math.random() * 20 - 10);
+                const dy = Math.sin(angle) * r + (Math.random() * 20 - 10);
+                s.style.left = x + 'px';
+                s.style.top = y + 'px';
+                s.style.setProperty('--dx', dx + 'px');
+                s.style.setProperty('--dy', dy + 'px');
+                document.body.appendChild(s);
+                setTimeout(() => s.remove(), 900); // إزالة الكلوب بعد الأنيميشن
+            }
+        }
+        
+        const heartBtn = document.getElementById('heartBtn');
+        
+        // دالة التفعيل عند الضغط على الكلب
+        function activate() {
+            heartBtn.classList.remove('do-pulse');
+            // إعادة تشغيل أنيميشن النبض
+            void heartBtn.offsetWidth;
+            heartBtn.classList.add('do-pulse');
+            
+            // إظهار الرسالة وبدء الكتابة المتدرجة
+            const msg = document.getElementById('loveMessage');
+            msg.style.display = 'block';
+            typeWriter(msg, text, 60);
+            
+            // إطلاق الكلوب الصغيرة من منتصف زر الكلب
+            const rect = heartBtn.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            burst(x, y);
+        }
+        
+        // اخذ امر لنقر الماوس أو لمس الشاشة
+        heartBtn.addEventListener('click', activate);
+        // اخذ امر لضغط مفتاح Enter أو Space من لوحة المفاتيح
+        heartBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+        });
+    </script>
+</body>
+
+</html>
